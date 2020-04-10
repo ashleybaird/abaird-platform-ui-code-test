@@ -31,6 +31,29 @@ export class ListComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(localStorage.getItem('savedProviders')) {
+      this.selectedProviders = JSON.parse(localStorage.getItem('savedProviders'));
+      this.unselectedProviders = JSON.parse(localStorage.getItem('unsavedProviders'));
+    }
+  }
 
-}
+  updateProvider(el, oldArray, newArray, type) {
+    let selectedArray = newArray;
+    let unselectedArray = oldArray;
+
+    if(type === 'remove') {
+      selectedArray = oldArray;
+      unselectedArray = newArray;
+    }
+
+    for(let providerId in oldArray) {
+      if(oldArray[providerId].id === el) {
+        newArray.push(oldArray[providerId]);
+        oldArray.splice(providerId, 1);
+        localStorage.setItem('savedProviders', JSON.stringify(selectedArray));
+        localStorage.setItem('unsavedProviders', JSON.stringify(unselectedArray));
+      }
+    };
+  }
+}  

@@ -8,3 +8,35 @@
 h2 {
   border-bottom: 1px solid lightgray;
 }
+
+h4 {
+	font-size: 12px;
+	margin: 10px 0;
+}
+
+button {
+	outline: none;
+}
+
+.provider {
+	display: inline-block;
+	text-align: center;
+	border: 1px solid;
+	padding: 20px;
+	position: relative;
+	width: 133px;
+}
+
+.provider:not(:last-child) {
+	margin-right: 10px;
+}
+
+.provider-delete {
+	border: none;
+	padding: 0;
+	position: absolute;
+	top: 5px;
+	right: 8px;
+	font-size: 16px;
+}
+
